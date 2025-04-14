@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  namespace: ml-project
+spec:
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+        - name: frontend
+          image: jrmd24/dit_virt_cont_exam_app_frontend:v1
+          env:
+            - name: REACT_APP_BACKEND_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: frontend-configmap
+                  key: backend-url
+            - name: CHOKIDAR_USEPOLLING
+              valueFrom:
+                configMapKeyRef:
+                  name: frontend-configmap
+                  key: chokidar-usepolling

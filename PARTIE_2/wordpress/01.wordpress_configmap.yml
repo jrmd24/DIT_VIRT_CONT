@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: wordpress-configmap
+  namespace: wordpress
+data:
+  wp-db-url: "mysql-service:3306"

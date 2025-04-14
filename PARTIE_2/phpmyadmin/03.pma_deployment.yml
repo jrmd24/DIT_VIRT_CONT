@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: phpmyadmin
+  namespace: wordpress
+spec:
+  selector:
+    matchLabels:
+      app: phpmyadmin
+  template:
+    metadata:
+      labels:
+        app: phpmyadmin
+    spec:
+      containers:
+        - name: phpmyadmin
+          image: phpmyadmin
+          env:
+            - name: PMA_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: pma-configmap
+                  key: db-url
+            - name: PMA_USER
+              valueFrom:
+                secretKeyRef:
+                  name: pma-secret
+                  key: db-user
+            - name: PMA_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: pma-secret
+                  key: db-pwd
