@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: jrmd24/dit_virt_cont_exam_app_frontend:v1
+          image: jrmd24/dit_virt_cont_exam_app_frontend:v2
           env:
             - name: REACT_APP_BACKEND_URL
               valueFrom:

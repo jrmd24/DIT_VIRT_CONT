@@ -5,4 +5,4 @@ metadata:
   namespace: ml-project
 data:
   app-db: "ml-app-db"
-  flask-env: "development"
+  flask-env: development

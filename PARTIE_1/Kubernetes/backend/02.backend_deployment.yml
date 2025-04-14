@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: jrmd24/dit_virt_cont_exam_app_backend:v1
+          image: jrmd24/dit_virt_cont_exam_app_backend:v2
           env:
             - name: MYSQL_HOST
               value: "mysql-service:3306"

@@ -6,7 +6,7 @@ metadata:
 spec:
   type: ClusterIP
   selector:
-    app: mysql
+    app: backend
   ports:
     - port: 5000
       targetPort: 5000
