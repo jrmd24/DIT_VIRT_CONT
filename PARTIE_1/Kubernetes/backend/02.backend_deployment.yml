@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  namespace: ml-project
+spec:
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+        - name: backend
+          image: jrmd24/dit_virt_cont_exam_app_backend:v2
+          env:
+            - name: MYSQL_HOST
+              value: "mysql-service:3306"
+            - name: MYSQL_DATABASE
+              valueFrom:
+                configMapKeyRef:
+                  name: backend-configmap
+                  key: app-db
+            - name: MYSQL_USER
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secret
+                  key: db-user
+            - name: MYSQL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secret
+                  key: db-pwd
+            - name: FLASK_ENV
+              valueFrom:
+                configMapKeyRef:
+                  name: backend-configmap
+                  key: flask-env

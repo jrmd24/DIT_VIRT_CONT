@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: frontend-configmap
+  namespace: ml-project
+data:
+  backend-url: "http://192.168.56.101:30005/"
+  chokidar-usepolling: "true"
